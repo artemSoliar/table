@@ -1,0 +1,71 @@
+<main class="wrapper">
+  <div class="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="">
+        <a href="#" class="sidebar-nav__icon"><i class="fa fa-lock" aria-hidden="true"></i></a>
+      </li>
+      <li class="">
+        <a href="#" class="sidebar-nav__icon"><i class="fa fa-print" aria-hidden="true"></i></a>
+      </li>
+      <li class="">
+        <a href="#" class="sidebar-nav__icon"><i class="fa fa-address-book-o" aria-hidden="true"></i></a>
+      </li>
+      <li class="">
+        <a href="#" class="sidebar-nav__icon sidebar-nav__icon--active"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+      </li>
+      <li class="">
+        <a href="#" class="sidebar-nav__icon"><i class="fa fa-table" aria-hidden="true"></i></a>
+      </li>
+      <li class="">
+        <a href="#" class="sidebar-nav__icon"><i class="fa fa-sign-out" aria-hidden="true"></i>
+          <div class="sidebar-nav__text">ВЫХОД</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <div class="row nopadding">
+        <div class="col-xs-12">
+          <div class="tabs">
+            <nav class="tabs__nav">
+              <a href="#" class="tabs__tab tabs__tab--selected">Контакты</a>
+              <a href="#" class="tabs__tab">Новости</a>
+            </nav>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-12 toolbar-wrapper">
+          <div class="toolbar">
+            <button type="button" class="btn btn-xs btn-default" (click)='refresh()'>
+              <span class="glyphicon glyphicon-repeat"></span>&nbsp;
+            </button>
+            <i class="fa fa-filter"></i>
+            <input type="text" class="toolbar__control" *ngIf="config.filtering" placeholder="Фильтр по всем колонкам" [ngTableFiltering]="config.filtering" (tableChanged)="onChangeTable(config)" />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="list-group-wrapper">
+            <ul class="list-group">
+              <li class="list-group-item borderless"><i class="fa fa-folder list-group-item__icon" aria-hidden="true"></i> Категория</li>
+              <li class="list-group-item borderless"><i class="fa fa-folder-open list-group-item__icon" aria-hidden="true"></i> Категория</li>
+              <ul class="list-group list-group--sub">
+                <li class="list-group-item borderless"><i class="fa fa-th" aria-hidden="true"></i> Подкатегория</li>
+                <li class="list-group-item borderless"><i class="fa fa-th" aria-hidden="true"></i> Подкатегория</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-8">
+          <div class="table-wrapper">
+            <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+            </ng-table>
+            <div class="pagination-wrapper">
+              <pagination *ngIf="config.paging" [pageBtnClass]="'.bg-info'" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage" [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)" (numPages)="numPages = $event">
+              </pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
