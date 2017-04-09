@@ -19,7 +19,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'ng2-table': 'npm:ng2-table',
       'moment': 'node_modules/moment/moment.js',
-      'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+      'ng2-bootstrap/ng2-bootstrap': 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.js',
     },
 
     packages: {
